@@ -1,7 +1,6 @@
 package cn.dominic.controller;
 
 import cn.dominic.VegetableApp;
-import cn.dominic.pojo.Config;
 import cn.dominic.pojo.PrintData;
 import cn.dominic.pojo.Vegetables;
 import cn.dominic.service.VegetablesService;
@@ -32,8 +31,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static com.alibaba.fastjson.JSON.parseObject;
 
 /**
  * @Description :
@@ -190,7 +187,7 @@ public class PrintController implements DisposableBean {
             printData.setPrintId(vegetables.getId());
             printData.setPrintName(vegetables.getName());
             printData.setPrintUnit(vegetables.getUnit());
-            printData.setPrintPrice(vegetables.getPrice().toString());
+            printData.setPrintPrice(vegetables.getPrice() == null ? null : vegetables.getPrice().toString());
             printDataList.add(printData);
         }
 
@@ -213,7 +210,7 @@ public class PrintController implements DisposableBean {
         printTable.getItems().remove(index);
     }
 
-    public void clear(){
+    public void clear() {
         printTable.getItems().clear();
     }
 
