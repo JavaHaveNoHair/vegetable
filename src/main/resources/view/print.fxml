@@ -41,7 +41,7 @@
             </columns>
         </TableView>
 
-        <Label layoutX="68.0" layoutY="28.0" text="搜索名称:">
+        <Label layoutX="68.0" layoutY="28.0" text="搜索名称：">
             <font>
                 <Font size="18.0"/>
             </font>
@@ -56,14 +56,14 @@
         </Button>
 
         <Button fx:id="btnAdd" layoutX="240.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#add"
-                prefWidth="82.0" text="添加-&gt;" textAlignment="CENTER" textFill="#439ac9">
+                prefWidth="102.0" text="添加-&gt;" textAlignment="CENTER" textFill="#439ac9">
             <font>
                 <Font size="18.0"/>
             </font>
         </Button>
 
-        <Button fx:id="btnRemove" layoutX="580.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#delete"
-                prefWidth="82.0" text="&lt;-移除" textAlignment="CENTER" textFill="#439ac9">
+        <Button fx:id="btnRemove" layoutX="560.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#delete"
+                prefWidth="102.0" text="&lt;-移除" textAlignment="CENTER" textFill="#439ac9">
             <font>
                 <Font size="18.0"/>
             </font>
@@ -74,6 +74,14 @@
                 <Font size="18.0"/>
             </font>
         </Button>
+
+        <Label layoutX="568.0" layoutY="28.0" text="客户名称：">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="customerName" layoutX="648.0" layoutY="28.0"/>
+
         <Button fx:id="btnPrint" layoutX="800.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#print"
                 prefHeight="35.0" prefWidth="62.0" styleClass="interfaceButton" text="打印" textFill="#439ac9">
             <font>

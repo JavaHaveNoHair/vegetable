@@ -15,6 +15,8 @@ public class PrintData {
 
     private Integer printId;
 
+    private Integer seq;
+
     private String printName;
 
     private String printUnit;

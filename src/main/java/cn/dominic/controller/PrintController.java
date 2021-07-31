@@ -5,6 +5,7 @@ import cn.dominic.pojo.PrintData;
 import cn.dominic.pojo.Vegetables;
 import cn.dominic.service.VegetablesService;
 import cn.dominic.util.AlertUtil;
+import cn.dominic.util.CastUtil;
 import cn.dominic.util.PdfUtils;
 import cn.dominic.util.PrintUtil;
 import cn.dominic.view.RunningView;
@@ -74,6 +75,9 @@ public class PrintController implements DisposableBean {
 
     @FXML
     private TextField selectName;
+
+    @FXML
+    private TextField customerName;
 
     @FXML
     private CheckBox cSelectAll;
@@ -228,6 +232,11 @@ public class PrintController implements DisposableBean {
             }
         }
 
+        if (StringUtils.isEmpty(customerName.getText())) {
+            AlertUtil.showErrorAlert("打印失败", "请输入客户名称", false);
+            return;
+        }
+
         JSONObject confJson = SettingController.readConfFile();
         if (confJson == null) {
             AlertUtil.showErrorAlert("打印失败", "请先进行设置", false);
@@ -248,14 +257,23 @@ public class PrintController implements DisposableBean {
             return;
         }
 
-        for (PrintData printData : printDataList) {
-            if (!StringUtils.isEmpty(printData.getPrintPrice())) {
-                printData.setPrintTotalPrice(String.format("%.2f", Double.parseDouble(printData.getPrintPrice()) * Double.parseDouble(printData.getPrintNumber())));
+        for (int i = 0; i < printDataList.size(); i++) {
+            printDataList.get(i).setSeq(i + 1);
+            if (!StringUtils.isEmpty(printDataList.get(i).getPrintPrice())) {
+                printDataList.get(i).setPrintTotalPrice(String.format("%.2f", Double.parseDouble(printDataList.get(i).getPrintPrice()) * Double.parseDouble(printDataList.get(i).getPrintNumber())));
             }
         }
+
+        String sumPrice = String.format("%.2f", printDataList.stream().filter(p -> p.getPrintTotalPrice() != null).
+                mapToDouble(p -> Double.parseDouble(p.getPrintTotalPrice())).sum());
+        String upperCasePrice = CastUtil.moneyToUpperCase(sumPrice);
+
         Map<String, Object> map = new HashMap<>();
         map.put("printDataList", printDataList);
-        map.put("createDatetime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        map.put("customerName", customerName.getText());
+        map.put("sumPrice", sumPrice);
+        map.put("upperCasePrice", upperCasePrice);
+        map.put("createDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 
         List<String> pdfList = new ArrayList<>();
         if (printDataList.size() < DEFAULT_KITTING_SIZE) {
