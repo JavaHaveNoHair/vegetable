@@ -1,0 +1,15 @@
+.interfaceButton{
+    -fx-background-color: RoyalBlue;
+}
+
+#showManage{
+    -fx-background-color: #36c1c1;
+}
+
+#showPrint{
+    -fx-background-color: #e12424;
+}
+
+#pauseButton:hover{
+    -fx-background-color: #36c1c1;
+}

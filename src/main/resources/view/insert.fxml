@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="470.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cn.dominic.controller.InsertController">
+    <children>
+
+        <Label layoutX="288.0" layoutY="78.0" text="名称:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="name" layoutX="388.0" layoutY="78.0"/>
+        <Label layoutX="288.0" layoutY="128.0" text="单位:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="unit" layoutX="388.0" layoutY="128.0"/>
+        <Label layoutX="288.0" layoutY="178.0" text="数量:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="number" layoutX="388.0" layoutY="178.0"/>
+        <Label layoutX="288.0" layoutY="228.0" text="单价:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="price" layoutX="388.0" layoutY="228.0"/>
+
+        <Button fx:id="btnConfirm" layoutX="328.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#insert" prefHeight="35.0" prefWidth="62.0" text="新增" textAlignment="CENTER">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="btnCancel" layoutX="528.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="35.0" prefWidth="62.0" styleClass="interfaceButton" text="取消" textFill="#439ac9">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="470.0" prefWidth="927.0" stylesheets="@app.css" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.dominic.controller.SettingController">
+    <children>
+        <Label contentDisplay="TOP" layoutX="170.0" layoutY="140.0" text="打印机名称:" textAlignment="CENTER">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="printerName" layoutX="300.0" layoutY="140.0" promptText="请输入打印机名称"/>
+
+        <Label contentDisplay="TOP" layoutX="167.0" layoutY="240.0" text="打印存放路径:" textAlignment="CENTER">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="printPath" layoutX="300.0" layoutY="240.0" prefHeight="27.0" prefWidth="400.0"
+                   promptText="请输入打印数据存放路径"/>
+
+        <Button layoutX="700.0" layoutY="241.0" mnemonicParsing="false" onMouseClicked="#choosePrintTargetPath"
+                text="..."/>
+        <Label contentDisplay="TOP" layoutX="167.0" layoutY="340.0" text="打印模板路径:" textAlignment="CENTER">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="templatePath" layoutX="300.0" layoutY="340.0" prefHeight="27.0" prefWidth="400.0"
+                   promptText="请输入打印模板存放路径"/>
+
+        <Button layoutX="700.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#chooseTemplateTargetPath"
+                text="..."/>
+
+
+        <Button fx:id="btnSave" defaultButton="true" layoutX="400.0" layoutY="380.0" mnemonicParsing="false"
+                onMouseClicked="#save" prefHeight="35.0" prefWidth="77.0" text="保存" textFill="WHITE">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+
+        <Hyperlink layoutX="872.0" layoutY="1.0" onMouseClicked="#back" text="&lt;-返回">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Hyperlink>
+    </children>
+</AnchorPane>

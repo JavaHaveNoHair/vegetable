@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="470.0" prefWidth="927.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="cn.dominic.controller.PrintController">
+    <children>
+        <Label layoutX="180.0" layoutY="145.0" text="请选择">
+            <font>
+                <Font size="12.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="choiceTable" layoutY="170.0" prefHeight="300.0" prefWidth="450.0">
+            <columns>
+                <TableColumn fx:id="cColumnSelect" prefWidth="31.0" resizable="false">
+                    <graphic>
+                        <CheckBox fx:id="cSelectAll" mnemonicParsing="false" onMouseClicked="#selectAll"/>
+                    </graphic>
+                </TableColumn>
+                <TableColumn fx:id="choiceName" prefWidth="100.0" text="名称"/>
+                <TableColumn fx:id="choiceUnit" prefWidth="100.0" resizable="false" text="单位"/>
+                <TableColumn fx:id="choiceNumber" prefWidth="100.0" text="数量"/>
+                <TableColumn fx:id="choicePrice" prefWidth="100.0" text="单价"/>
+                <!--                <TableColumn fx:id="totalPrice" prefWidth="72.0" text="总价"/>-->
+            </columns>
+        </TableView>
+
+        <Label layoutX="680.0" layoutY="145.0" text="待打印">
+            <font>
+                <Font size="12.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="printTable" layoutX="477.0" layoutY="170.0" prefHeight="300.0" prefWidth="450.0">
+            <columns>
+                <TableColumn fx:id="printName" prefWidth="100.0" text="名称"/>
+                <TableColumn fx:id="printUnit" prefWidth="100.0" resizable="false" text="单位"/>
+                <TableColumn fx:id="printNumber" prefWidth="100.0" text="数量"/>
+                <TableColumn fx:id="printPrice" prefWidth="100.0" text="单价"/>
+                <!--                <TableColumn fx:id="printTotalPrice" prefWidth="100.0" text="总价"/>-->
+            </columns>
+        </TableView>
+
+        <Label layoutX="68.0" layoutY="28.0" text="搜索名称:">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="selectName" layoutX="148.0" layoutY="28.0"/>
+
+        <Button fx:id="btnSelect" layoutX="70.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#select"
+                prefHeight="35.0" prefWidth="62.0" styleClass="interfaceButton" text="查询" textFill="#439ac9">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+
+        <Button fx:id="btnAdd" layoutX="240.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#add"
+                prefWidth="82.0" text="添加-&gt;" textAlignment="CENTER" textFill="#439ac9">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+
+        <Button fx:id="btnRemove" layoutX="580.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#delete"
+                prefWidth="82.0" text="&lt;-移除" textAlignment="CENTER" textFill="#439ac9">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Button fx:id="btnClear" layoutX="690.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#clear"
+                prefWidth="82.0" text="清空" textAlignment="CENTER" textFill="#439ac9">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+        <Button fx:id="btnPrint" layoutX="800.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#print"
+                prefHeight="35.0" prefWidth="62.0" styleClass="interfaceButton" text="打印" textFill="#439ac9">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+
+        <Hyperlink layoutX="867.0" layoutY="6.0" onMouseClicked="#back" text="&lt;-返回">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Hyperlink>
+    </children>
+</AnchorPane>

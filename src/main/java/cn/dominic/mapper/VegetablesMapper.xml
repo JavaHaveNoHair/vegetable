@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.dominic.mapper.VegetablesMapper">
+
+    <insert id="insert" parameterType="Vegetables">
+    insert into vegetables(name,unit,number,price) values (#{name},#{unit},#{number},#{price})
+  </insert>
+
+    <update id="update" parameterType="Vegetables">
+    update vegetables set name=#{name},unit=#{unit},number=#{number},price=#{price} where id = #{id}
+  </update>
+
+    <select id="select" resultType="Vegetables" parameterType="String">
+    select * from vegetables where name like CONCAT('%',#{name},'%')
+  </select>
+
+  <select id="selectById" resultType="Vegetables" parameterType="Integer">
+    select * from vegetables where id = #{id}
+  </select>
+
+    <delete id="delete" parameterType="Integer">
+    delete from vegetables where id = #{id}
+  </delete>
+</mapper>
