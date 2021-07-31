@@ -54,8 +54,8 @@ public class UpdateController implements DisposableBean {
         Vegetables vegetables = new Vegetables();
         vegetables.setName(name.getText());
         vegetables.setUnit(unit.getText());
-        vegetables.setNumber(number.getText() == null ? null : Double.parseDouble(number.getText()));
-        vegetables.setPrice(price.getText() == null ? null : Double.parseDouble(price.getText()));
+        vegetables.setNumber(StringUtils.isEmpty(number.getText()) ? null : Double.parseDouble(number.getText()));
+        vegetables.setPrice(StringUtils.isEmpty(price.getText()) ? null : Double.parseDouble(price.getText()));
         vegetables.setId(id);
         vegetablesService.update(vegetables);
         Stage stage = (Stage) btnUpdate.getScene().getWindow();
