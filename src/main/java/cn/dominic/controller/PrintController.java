@@ -29,6 +29,7 @@ import javax.annotation.Resource;
 import javax.print.PrintService;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -96,7 +97,7 @@ public class PrintController implements DisposableBean {
     /**
      * 默认每页打印条数
      */
-    private static final Integer DEFAULT_KITTING_SIZE = 16;
+    private static final Integer DEFAULT_KITTING_SIZE = 40;
 
     public void initialize() {
         select();
@@ -264,14 +265,16 @@ public class PrintController implements DisposableBean {
             }
         }
 
-        String sumPrice = String.format("%.2f", printDataList.stream().filter(p -> p.getPrintTotalPrice() != null).
-                mapToDouble(p -> Double.parseDouble(p.getPrintTotalPrice())).sum());
-        String upperCasePrice = CastUtil.moneyToUpperCase(sumPrice);
+        double sumPrice = printDataList.stream().filter(p -> p.getPrintTotalPrice() != null).
+                mapToDouble(p -> Double.parseDouble(p.getPrintTotalPrice())).sum();
+        String upperCasePrice = CastUtil.moneyToUpperCase(String.format("%.2f", sumPrice));
+
+        NumberFormat format = NumberFormat.getCurrencyInstance();
 
         Map<String, Object> map = new HashMap<>();
         map.put("printDataList", printDataList);
         map.put("customerName", customerName.getText());
-        map.put("sumPrice", sumPrice);
+        map.put("sumPrice", format.format(sumPrice));
         map.put("upperCasePrice", upperCasePrice);
         map.put("createDate", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 
@@ -289,7 +292,7 @@ public class PrintController implements DisposableBean {
             }
         }
 
-        // 打印分拣单
+        // 打印出货单
         pdfList.forEach(p -> PrintUtil.printPdf(localPrinterName, p));
     }
 
